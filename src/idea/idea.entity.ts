@@ -11,9 +11,9 @@ export class IdeaEntity {
     @UpdateDateColumn()
     updated: Date;
 
-    @Column('text') 
+    @Column('text', { nullable: true }) 
     idea: string;
 
-    @Column('text') 
+    @Column('text', { nullable: true }) 
     description: string;
 }
