@@ -1,0 +1,12 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": "5432",
+    "username": "postgres",
+    "password": "changeme",
+    "database": "ideas",
+    "entities": ["src/**/*.entity.ts", "dist/**/*.entity.js"],
+    "autoSchemaSync": true,
+    "synchronize": true,
+    "logging": true
+}
