@@ -38,7 +38,7 @@ export class IdeaService {
 
          await this.IdeaRepository.update( {id}, data );
          idea = await this.IdeaRepository.findOne({ where: {id} });
-         return await idea;
+         return idea;
     }
 
     async destroy(id: string) {
