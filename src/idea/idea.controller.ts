@@ -17,17 +17,18 @@ export class IdeaController {
     }
 
     @Get(':id')
-    getIdea(@Param(':id') id: string) {
+    getIdea(@Param('id') id: string) {
         return this.IdeaService.read(id);
     }
 
+
     @Put(':id')
-    updateIdea(@Param(':id') id: string, @Body() data: Partial<IdeaDTO>) {
+    updateIdea(@Param('id') id: string, @Body() data: Partial<IdeaDTO>) {
         return this.IdeaService.update(id, data);
     }
 
     @Delete(':id')
-    destroyIdea(@Param(':id') id: string) {
+    destroyIdea(@Param('id') id: string) {
         return this.IdeaService.destroy(id);
     }
 }
