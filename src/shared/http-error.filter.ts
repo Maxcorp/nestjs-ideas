@@ -14,14 +14,25 @@ export class HttpErrorFilter implements ExceptionFilter{
             timestamp: new Date().toLocaleDateString(),
             path: request.url,
             method: request.method,
-            message: exeception.message.error || exeception.message || null,
+            message:
+            status !== HttpStatus.INTERNAL_SERVER_ERROR
+              ? exeception.message.error || exeception.message || null
+              : 'Internal server error',
         };
 
-        Logger.error(
-            `${request.method} ${request.url}`, 
-            JSON.stringify(errorResponse), 
-            'ExceptionFilter'
-        );
+        if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
+            Logger.error(
+              `${request.method} ${request.url}`,
+              exeception.stack,
+              'ExceptionFilter',
+            );
+          } else {
+            Logger.error(
+              `${request.method} ${request.url}`,
+              JSON.stringify(errorResponse),
+              'ExceptionFilter',
+            );
+          }
 
         response.status(status).json(errorResponse);
     }
