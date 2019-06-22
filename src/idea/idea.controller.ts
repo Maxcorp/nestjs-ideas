@@ -86,7 +86,7 @@ export class IdeaController {
 
   @Post(':id/upvote')
   @UseGuards(new AuthGuard())
-  upvoteIdea(@Param('id') id: string, @User('id') user: string) {
+  upvoteIdea(@Param('id') id: string, @User('id') user: string): any {
     this.logData({ id, user });
     return this.IdeaService.upvote(id, user);
   }
