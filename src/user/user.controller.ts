@@ -20,9 +20,9 @@ export class UserController {
 
   @Get('api/users')
   //@UseGuards(new AuthGuard)
-  showAllUsers(@User() user) {
+  showAllUsers(@Query('page') page: number) {
     //console.log(user);
-    return this.userService.showAll();
+    return this.userService.showAll(page);
   }
 
   @Post('login')
